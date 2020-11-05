@@ -1,6 +1,7 @@
 # XML to DB Test Application 1.0.0
 Parses input XML file and stores data to the configured database.
 XML file element example
+
 ```xml
   <transaction>
     <place>A PLACE 1</place>
@@ -15,6 +16,7 @@ XML file element example
     </client>
   </transaction>
 ```
+
 ## Implementation Overview
 Data entities for persistence: Client, Place, BankingTransaction. 
 Input files can be huge therefore they are processed as a stream.
@@ -31,7 +33,7 @@ Unit tests are configured to use in-memory H2 database (_/resources/application-
 Maven is used to build application.
 
 ## Configuration
-Application configuration file _/resources/application.properties_
+__Application configuration__ file _/resources/application.properties_
 Database type
   _spring.jpa.database=POSTGRESQL_
 Dump JPA SQL queries to standard out 
@@ -46,14 +48,14 @@ _CREATE DATABASE <db_name>;
 CREATE USER <user_name> WITH PASSWORD <user_pwd>;
 GRANT ALL PRIVILEGES ON DATABASE <db_name> TO <user_name>;_
 
-_JPA logging_ 
+JPA logging
 _logging.level.org.hibernate.SQL=ERROR_
-_Log transaction details_
-_logging.level.org.springframework.orm.jpa=ERROR
-logging.level.org.springframework.transaction=ERROR_
+Log transaction details
+_logging.level.org.springframework.orm.jpa=ERROR_
+_logging.level.org.springframework.transaction=ERROR_
 
-Test configuration file _/resources/application-test.properties_
-_Unit tests are configured to use in-memory h2 database_
+__Test configuration__ file _/resources/application-test.properties_
+Unit tests are configured to use in-memory h2 database
 
 Dump JPA SQL queries to standard out. 
 _hibernate.show_sql=true_
@@ -63,12 +65,15 @@ _hibernate.hbm2ddl.auto=create-drop_
 ## Usage
 
 * build and run tests
+```sh
   $ mvn clean package
-
+```
 * run
+```sh
   $ mvn spring-boot:run -Dspring-boot.run.arguments=<file.name>
-    or
+or
   $ java -jar xml2db-0.0.1-SNAPSHOT.jar <file.name>
+```
 
 ## [License](LICENSE)
 Copyright (c) 2020 larysa <lsg_swe@hotmail.com> 
