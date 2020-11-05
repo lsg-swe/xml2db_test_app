@@ -23,7 +23,7 @@ Input files can be huge therefore they are processed as a stream.
 Uses Spring Data JPA (database configuration _/resources/application.properties_). 
 
 Single BankingTransaction object is processed as a single db transaction. 
-If the CLient in the banking transaction is found in the DB (search by inn), its id (PK) is used. Otherwise new Client is added to the DB.
+If the Client in the banking transaction is found in the DB (search by inn), its id (PK) is used. Otherwise new Client is added to the DB.
 If the Place in the banking transaction is found in the DB (search by place name), its id (PK) is used. Otherwise new Place is added to the DB.
 If one BankingTransaction entry processing fails, rollback is issued for this entry + related Client and Place updates.
 
@@ -33,7 +33,7 @@ Unit tests are configured to use in-memory H2 database (_/resources/application-
 Maven is used to build application.
 
 ## Configuration
-__Application configuration__ file _/resources/application.properties_
+__Application configuration__ file is  _/resources/application.properties_
 Database type
   _spring.jpa.database=POSTGRESQL_
 Dump JPA SQL queries to standard out 
@@ -49,17 +49,25 @@ CREATE USER <user_name> WITH PASSWORD <user_pwd>;
 GRANT ALL PRIVILEGES ON DATABASE <db_name> TO <user_name>;_
 
 JPA logging
+
 _logging.level.org.hibernate.SQL=ERROR_
+
 Log transaction details
+
 _logging.level.org.springframework.orm.jpa=ERROR_
+
 _logging.level.org.springframework.transaction=ERROR_
 
-__Test configuration__ file _/resources/application-test.properties_
+__Test configuration__ file is _/resources/application-test.properties_
 Unit tests are configured to use in-memory h2 database
 
+
 Dump JPA SQL queries to standard out. 
+
 _hibernate.show_sql=true_
+
 Initialize database (the standard Hibernate property values, can be set to ''none'', ''validate'', ''update'', ''create-drop'') 
+
 _hibernate.hbm2ddl.auto=create-drop_
 
 ## Usage
