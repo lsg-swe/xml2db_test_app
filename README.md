@@ -34,18 +34,26 @@ Maven is used to build application.
 
 ## Configuration
 __Application configuration__ file is  _/resources/application.properties_
+
 Database type
+
   _spring.jpa.database=POSTGRESQL_
+
 Dump JPA SQL queries to standard out 
+
   _spring.jpa.show-sql=true_
 
 Initialize database (the standard Hibernate property values, can be set to ''none'', ''validate'', ''update'', ''create-drop'') 
+
   _spring.jpa.hibernate.ddl-auto=create_
 
 __Note__
 In the case of PostgeSQL, database itself and user with granted access shall exist before application run. Test db can be created as 
+
 _CREATE DATABASE <db_name>;
+
 CREATE USER <user_name> WITH PASSWORD <user_pwd>;
+
 GRANT ALL PRIVILEGES ON DATABASE <db_name> TO <user_name>;_
 
 JPA logging
@@ -59,8 +67,8 @@ _logging.level.org.springframework.orm.jpa=ERROR_
 _logging.level.org.springframework.transaction=ERROR_
 
 __Test configuration__ file is _/resources/application-test.properties_
-Unit tests are configured to use in-memory h2 database
 
+Unit tests are configured to use in-memory H2 database.
 
 Dump JPA SQL queries to standard out. 
 
